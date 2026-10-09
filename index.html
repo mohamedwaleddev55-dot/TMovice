@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.3.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style-login.css">
+    <title>Login</title>
+    <style>
+        body{
+    background-image: url(img/m5.png);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: sans-serif;
+}
+.card-body{
+    background-color: black;
+    border-radius: 50px;
+    border: 2px solid rgb(255, 255, 255);
+}
+.tect-l{
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    font-weight: bold;
+    font-style: oblique;
+}
+.fw-bold{
+    font-style: italic;
+}
+.btn:hover{
+    background-color: #020202; 
+    border-color: #ffffff; 
+    color: #ffffff;
+    transform: translateY(-3px) scale(1.03); 
+}
+.btn{
+    background-color: #e50914; 
+    color: #ffffff; 
+    border: 2px solid #e50914;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px; 
+    transition: all 0.3s ease; 
+}
+.qqq{
+    color: #e50914;
+}
+.gradient-custom a{
+    color: white;
+    transition: all 0.3s ease;
+}
+.gradient-custom a:hover{
+    color: #e50914;
+
+    transform: translateY(-3px) scale(1.03);
+}
+.form-outline.form-white .form-control,
+.form-outline.form-white .form-control:focus {
+    border: none !important;
+    box-shadow: none !important;
+}
+.form-outline.form-white .form-notch *,
+.form-outline.form-white .form-notch-leading,
+.form-outline.form-white .form-notch-middle,
+.form-outline.form-white .form-notch-trailing {
+    border: none !important;
+    border-color: transparent !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #000000 inset !important; 
+    -webkit-text-fill-color: #ffffff !important; 
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
+.form-outline .form-notch,
+.form-outline .form-notch-leading,
+.form-outline .form-notch-middle,
+.form-outline .form-notch-trailing {
+    border: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+
+.form-outline .form-control,
+.form-outline .form-control:focus,
+.form-outline .form-control:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    color: #ffffff !important;
+}
+
+
+.form-outline {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+.form-outline:focus-within {
+    border-bottom-color: #e50914 !important; 
+}
+.form-outline .form-control:-webkit-autofill ~ .form-label {
+    transform: translateY(-1rem) scale(0.8) !important;
+    color: #ffffff !important;
+}
+    </style>
+</head>
+<body>
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card text-white" style="border-radius: 4rem;">
+                        <div class="card-body text-center">
+
+                            <div class="card-log mb-md-5 mt-md-4 pb-5">
+
+                                <h2 class="fw-bold mb-2 text-uppercase">Log<span class="qqq">IN</span></h2>
+                                <p class="tect-l mb-5">Please enter your login and password!</p>
+
+                              
+                                <form action="home.html" method="GET">
+
+                                    
+                                    <div data-mdb-input-init class="form-outline form-white mb-4">
+                                        <input type="email" id="typeEmailX" name="email" class="form-control form-control-lg " required />
+                                        <label class="form-label" for="typeEmailX">Email</label>
+                                    </div>
+
+
+                                  
+
+                                   
+                                    <div data-mdb-input-init class="form-outline form-white mb-4">
+                                        <input type="password" id="typePasswordX" class="pass form-control form-control-lg" required />
+                                        <label class="form-label" for="typePasswordX">Password</label>
+                                    </div>
+
+                                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+
+                                   
+                                    <button type="submit" class="btn btn-outline-light btn-lg px-5 mt-3">Log In</button>
+                                </form>  
+                                <div class="link d-flex justify-content-center text-center mt-4 pt-1">
+                                    <a href="#!" class="social-link"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                    <a href="#!" class="social-link"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                                    <a href="#!" class="social-link"><i class="fab fa-google fa-lg"></i></a>
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <p class="mb-0">Don't have an account? <a href="sign.html" class="text-white-50 fw-bold">Sign Up</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.3.0/mdb.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="script.js"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+   
+    gsap.from(".card", {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        ease: "power3.out"
+    });
+
+    
+    gsap.from(".card-log h2, .card-log p, .form-outline, .small, form button, .social-link, .card-body > div p", {
+        duration: 0.8,
+        y: 25,
+        opacity: 0,
+        stagger: 0.1,
+        delay: 0.2,
+        ease: "power2.out",
+        clearProps: "all"
+    });
+
+    
+    const btn = document.querySelector("form button");
+    if (btn) {
+        btn.addEventListener("mouseenter", () => {
+            gsap.to(btn, { scale: 1.05, duration: 0.2 });
+        });
+        btn.addEventListener("mouseleave", () => {
+            gsap.to(btn, { scale: 1, duration: 0.2 });
+        });
+    }
+
+    
+    const socialIcons = document.querySelectorAll(".social-link i");
+    socialIcons.forEach(icon => {
+        icon.addEventListener("mouseenter", () => {
+            gsap.to(icon, { scale: 1.3, rotate: 12, duration: 0.2, ease: "back.out(2)" });
+        });
+        icon.addEventListener("mouseleave", () => {
+            gsap.to(icon, { scale: 1, rotate: 0, duration: 0.2 });
+        });
+    });
+
+    
+    const form = document.querySelector("form");
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const passInput = document.getElementById("typePasswordX");
+            const confirmPassInput = document.getElementById("typeConfirmPasswordX");
+
+            
+            if (passInput && confirmPassInput) {
+                if (passInput.value !== confirmPassInput.value) {
+                    alert("كلمتا السر غير متطابقتين!");
+                    return;
+                }
+            }
+
+            
+            window.location.href = "home.html";
+        });
+    }
+
+});
+</script>
+</body>
+</html>

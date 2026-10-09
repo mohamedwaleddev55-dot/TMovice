@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+    <title>أفلام رومانسية | TMovise Cinema</title>
+    
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+      
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --primary-red: #e50914;
+        --red-hover: #b80710;
+        --bg-black: #0a0a0c;
+        --card-bg: #141519;
+        --card-bg-hover: #1c1e24;
+        --text-white: #ffffff;
+        --text-gray: #a0a5b1;
+        --accent-glow: rgba(229, 9, 20, 0.4);
+      }
+
+      body {
+        background-color: var(--bg-black);
+        color: var(--text-white);
+        font-family: 'Cairo', 'Roboto', sans-serif;
+        overflow-x: hidden;
+      }
+
+      
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-black);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary-red);
+        border-radius: 4px;
+      }
+
+      
+      .navbar-custom {
+        background: rgba(10, 10, 12, 0.9);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 12px 30px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .brand-logo {
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--primary-red);
+        letter-spacing: 1px;
+        text-shadow: 0 0 15px var(--accent-glow);
+      }
+      .brand-logo span {
+        color: var(--text-white);
+      }
+
+      .main-hero-swiper {
+        width: 100%;
+        height: 75vh;
+        min-height: 480px;
+        max-height: 650px;
+        position: relative;
+      }
+      .main-hero-swiper .swiper-slide {
+        position: relative;
+        overflow: hidden;
+      }
+      .main-hero-swiper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          var(--bg-black) 8%,
+          rgba(10, 10, 12, 0.6) 50%,
+          rgba(10, 10, 12, 0.2) 100%
+        ),
+        linear-gradient(
+          to left,
+          rgba(10, 10, 12, 0.9) 0%,
+          transparent 60%
+        );
+      }
+      .hero-caption {
+        position: absolute;
+        bottom: 50px;
+        right: 50px;
+        max-width: 550px;
+        z-index: 2;
+      }
+      .hero-badge {
+        display: inline-block;
+        background: var(--primary-red);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 4px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+      }
+      .hero-caption h2 {
+        font-size: 36px;
+        font-weight: 900;
+        margin-bottom: 10px;
+        line-height: 1.2;
+      }
+      .hero-caption p {
+        color: var(--text-gray);
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .hero-buttons {
+        display: flex;
+        gap: 12px;
+      }
+      .btn-main {
+        background-color: var(--primary-red);
+        color: #fff;
+        font-weight: 700;
+        padding: 10px 24px;
+        border-radius: 6px;
+        border: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-main:hover {
+        background-color: var(--red-hover);
+        color: #fff;
+        box-shadow: 0 0 20px var(--accent-glow);
+        transform: translateY(-2px);
+      }
+      .btn-outline {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+      }
+      .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.25);
+        color: #fff;
+      }
+
+      
+      .main-hero-swiper .swiper-pagination-bullet {
+        background: #fff;
+        opacity: 0.5;
+        width: 100px;
+        height: 10px;
+      }
+      .main-hero-swiper .swiper-pagination-bullet-active {
+        background: var(--primary-red);
+        opacity: 1;
+        width: 25px;
+        border-radius: 5px;
+      }
+
+      
+      .movie-section {
+        width: 100%;
+        padding: 40px 50px;
+        margin-bottom: 10px;
+      }
+      .section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        border-right: 5px solid var(--primary-red);
+        padding-right: 14px;
+      }
+      .section-title {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--text-white);
+      }
+
+      .movie-swiper-container {
+        position: relative;
+        padding: 10px 25px;
+      }
+
+      .movie-card {
+        background: var(--card-bg);
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        cursor: pointer;
+      }
+      .movie-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.9), 0 0 20px var(--accent-glow);
+        border-color: rgba(229, 9, 20, 0.5);
+      }
+      .movie-card .img-box {
+        position: relative;
+        width: 100%;
+        height: 380px;
+        overflow: hidden;
+      }
+      .movie-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      .movie-card:hover img {
+        transform: scale(1.1);
+      }
+      .rating-tag {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: rgba(10, 10, 12, 0.85);
+        border: 1px solid rgba(255, 215, 0, 0.5);
+        color: #ffd700;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 4px 10px;
+        border-radius: 8px;
+        backdrop-filter: blur(6px);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        z-index: 2;
+      }
+      .movie-card .info {
+        padding: 18px;
+      }
+      .movie-card .title {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--text-white);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 8px;
+      }
+      .movie-card .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: var(--text-gray);
+      }
+
+      .movie-swiper-container .swiper-button-next,
+      .movie-swiper-container .swiper-button-prev {
+        color: #fff;
+        background: rgba(20, 21, 25, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+      }
+      .movie-swiper-container .swiper-button-next {
+        right: -15px;
+      }
+      .movie-swiper-container .swiper-button-prev {
+        left: -15px;
+      }
+      .movie-swiper-container .swiper-button-next:hover,
+      .movie-swiper-container .swiper-button-prev:hover {
+        background: var(--primary-red);
+        border-color: var(--primary-red);
+        box-shadow: 0 0 20px var(--accent-glow);
+        scale: 1.1;
+      }
+      .movie-swiper-container .swiper-button-next::after,
+      .movie-swiper-container .swiper-button-prev::after {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .ac, .an, .ro, .ho, .hi {
+        color: red;
+        transition: all 0.3s ease;
+      }
+
+      .dropdown img{
+        margin-right:50px !important;
+        margin-left: 20px;
+      }
+      .search-box{
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 680px !important;
+        background-color: #ffffff;
+        border: 2px solid #e50914; 
+        border-radius: 25px; 
+        padding: 0px 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+      .search-box:focus-within {
+        border-color: #000000; 
+        box-shadow: 0 4px 15px rgba(229, 9, 20, 0.2);
+      }
+      .search-bar{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .search {
+        width: 100%;
+        padding: 6px 10px;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 15px;
+        color: #000000; 
+      }
+      .search::placeholder{
+        color: #888888;
+      }
+      .search::-webkit-search-decoration,
+      .search::-webkit-search-cancel-button,
+      .search::-webkit-search-results-button,
+      .search::-webkit-search-results-decoration {
+        display: none;
+      }
+      .search-icon {
+        color: #e50914; 
+        font-size: 18px;
+        cursor: pointer;
+        padding: 5px;
+        transition: transform 0.2s ease, color 0.2s ease;
+      }
+      .search-icon:hover {
+        color: #000000; 
+        transform: scale(1.1); 
+      }
+      .navbar-nav{
+        padding-right: 40px !important;
+      }
+      .nav-item{
+        padding-right: 30px !important;
+      }
+      .navbar{
+        background-color: black !important;
+        position: sticky;
+        top: 0;
+        z-index: 1000; 
+      }
+      .navbar-nav a{
+        color:white;
+        font-size:15px;
+        font-weight: bold;
+        font-style: italic;
+        border: 2px solid red;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        padding: 8px 16px;
+      }
+      
+      .navbar-nav a:hover{
+        color: white;
+        border: 2px solid white ;
+        background-color: black;
+      }
+      .navbar-nav a:hover .ac,
+      .navbar-nav a:hover .an,
+      .navbar-nav a:hover .ro,
+      .navbar-nav a:hover .ho,
+      .navbar-nav a:hover .hi {
+        color: white;
+      }
+      .search{
+        border: 2px solid white;
+        border-radius: 10px;
+      }
+      .fa-solid{
+        color: red;
+      }
+      .collapse img{
+        margin-left: 50px;
+      }
+      .footer-section{
+            background-color: black !important;
+            border: 2px solid red;
+        }
+        .footer-section a{
+            color: white;
+            transition: all 0.4s ease !important;
+        }
+        .footer-section a:hover{
+            transform: translateY(-4px) !important;
+        }
+        .btn{
+            color: white;
+            background-color: red;
+            transition: all 0.4s ease !important;
+        }
+        p{
+            color: white;
+            font-weight: bold;
+        }
+        .form-control{
+          border: 2px solid red !important;
+        }
+        .form-label{
+          color: white !important;
+        }
+     .form-control{
+      background-color: transparent !important;
+      color: white !important;
+     }
+     .form-control:-webkit-autofill{
+      -webkit-box-shadow:0 0 0 30px black inset !important;
+      -webkit-text-fill-color: white !important;
+     }
+
+
+.eee{
+  color: red;
+}
+.end-footer{
+  color: white;
+}
+.movie-card .img-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+.movie-card .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #e50914; 
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.movie-card .meta span {
+  color: #e50914; 
+}
+
+.movie-card .overview-text {
+  color: #a0a5b1;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-top: 8px;
+  margin-bottom: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.title-navbar{
+        color: white;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+      }
+      .title-navbar h2{
+        font-size: 40px;
+        font-weight: bold;
+        font-style: oblique;
+      }
+      .TTT{
+        color: red;
+      }
+
+      @media (max-width: 992px) {
+        .movie-card .img-box {
+          height: 320px;
+        }
+      }
+      @media (max-width: 768px) {
+        .hero-caption {
+          right: 20px;
+          left: 20px;
+          bottom: 30px;
+        }
+        .hero-caption h2 {
+          font-size: 24px;
+        }
+        .movie-section {
+          padding: 20px;
+        }
+        .movie-card .img-box {
+          height: 280px;
+        }
+        .movie-swiper-container {
+          padding: 10px 0;
+        }
+        .movie-swiper-container .swiper-button-next { right: 0; }
+        .movie-swiper-container .swiper-button-prev { left: 0; }
+      }
+      .nav1{
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+   
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <button
+          data-mdb-collapse-init
+          class="navbar-toggler"
+          type="button"
+          data-mdb-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars" style="color: red;"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <a class="navbar-brand mt-2 mt-lg-0" href="index.html">
+            <img
+              src="img/m1.jpeg"
+              height="60"
+              width="60"
+              alt="Logo"
+              loading="lazy"
+              style="border-radius: 50%; object-fit: cover;"
+            />
+          </a>
+          <div class="title-navbar">
+            <h2><span class="TTT">TM</span>ovice</h2>
+          </div>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="action.html">AC<span class="ac">TION</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="anime.html">ANIM<span class="an">ATION</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="romance.html">ROMA<span class="ro">NTICS</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="horror.html">HOR<span class="ho">ROR</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="historical.html">HIST<span class="hi">ORICAL</span></a>
+            </li>
+            <li class="nav-item">
+            <a href="home.html" class="nav-link">
+             <i class="fa-solid fa-house"></i> 
+          </a>
+          </li>
+          </ul>
+        </div>
+
+        <div class="dropdown search-bar">
+          <a
+            data-mdb-dropdown-init
+            class="dropdown-toggle d-flex align-items-center hidden-arrow"
+            href="#"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            aria-expanded="false"
+          >
+            <img 
+              src="img/m2.jfif"
+              class="rounded-circle"
+              height="60"
+              alt="Avatar"
+              loading="lazy"
+            />
+          </a>  
+          
+          <div class="search-box">
+            <input type="search" class="search" placeholder="search here">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+     <div class="swiper main-hero-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="img/roma.jpg" alt="Slide 1"/>
+          <div class="hero-overlay"></div>
+          <div class="hero-caption">
+            <span class="hero-badge">جديد السينما</span>
+            <h2>عالم من الحب و العاطفه </h2>
+            <p>استمتع بأحدث أفلام الرومانسيه و الحب الصادق مع احبتك </p>
+            <div class="hero-buttons">
+              <a href="#" class="btn-main"><i class="fa-solid fa-play"></i> مشاهدة الآن</a>
+              <a href="#" class="btn-outline"><i class="fa-solid fa-plus"></i> قائمتي</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="movie-section">
+      <div class="section-header"><div class="section-title">أفلام رومانسية الأكثر مشاهدة</div></div>
+      <div class="movie-swiper-container" dir="ltr">
+        <div class="swiper category-swiper">
+          <div class="swiper-wrapper">
+            
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="movie-section">
+      <div class="section-header"><div class="section-title">أحدث الإصدارات الرومانسية</div></div>
+      <div class="movie-swiper-container" dir="ltr">
+        <div class="swiper category-swiper">
+          <div class="swiper-wrapper">
+            
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="movie-section">
+      <div class="section-header"><div class="section-title">حصريات رومانسية</div></div>
+      <div class="movie-swiper-container" dir="ltr">
+        <div class="swiper category-swiper">
+          <div class="swiper-wrapper">
+            
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer-section bg-body-tertiary text-center" dir="ltr">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      
+
+    
+    </section>
+    
+
+    
+    <section class="your-email">
+      <form action="#" method="get">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+          
+          <div data-mdb-input-init class="form-outline form-white mb-4">
+         <input type="email" id="form5Example24" name="email" class="form-control" placeholder=" " required />
+         <label class="form-label" for="form5Example24">Email address</label>
+            </div>
+
+
+
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button data-mdb-ripple-init type="submit" class="btn btn-outline mb-4">
+              Subscribe
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <p>
+      At MovieSite, we are passionate about bringing the magic of cinema directly to your home. Discover an ever-growing library of movies, series, and exclusive content tailored for every film enthusiast. Sit back, relax, and enjoy the show
+      </p>
+    </section>
+    <!-- Section: Text -->
+
+    <!-- Section: Links -->
+    <section class="footer-links-section py-4">
+  <!--Grid row-->
+  <div class="row">
+
+   
+    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 text-start">
+      <h5 class="text-uppercase fw-bold text-danger mb-3">MovieSite</h5>
+      <p class="small text-white-50">
+        Your ultimate destination for endless cinematic entertainment. Stream your favorite movies and series in high quality anytime, anywhere.
+      </p>
+    </div>
+
+   
+    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+      <h5 class="text-uppercase fw-bold mb-3 text-white">Explore</h5>
+      <ul class="list-unstyled mb-0">
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">Action & Adventure</a></li>
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">Comedy & Drama</a></li>
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">Sci-Fi & Fantasy</a></li>
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">Trending Series</a></li>
+      </ul>
+    </div>
+
+  
+    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+      <h5 class="text-uppercase fw-bold mb-3 text-white">Company</h5>
+      <ul class="list-unstyled mb-0">
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">About Us</a></li>
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">Terms of Service</a></li>
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">Privacy Policy</a></li>
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">DMCA / Copyright</a></li>
+      </ul>
+    </div>
+
+    
+    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+      <h5 class="text-uppercase fw-bold mb-3 text-white">Support</h5>
+      <ul class="list-unstyled mb-0">
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">Contact Us</a></li>
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">Help Center / FAQ</a></li>
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">Request a Movie</a></li>
+        <li class="mb-2"><a class="text-white-50 text-decoration-none" href="#!">System Status</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <!--Grid row-->
+</section>
+    <!-- Section: Links -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="end-footer text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2026 Copyright:
+    <a class="text-reset fw-bold" href="#"><span class="eee">T</span>Movies.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+
+    <!-- Swiper JS & Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <script src="category.js"></script>
+
+    <script>
+      const swipers = document.querySelectorAll('.category-swiper');
+      swipers.forEach(slider => {
+        new Swiper(slider, {
+          slidesPerView: 4,
+          spaceBetween: 20,
+          loop: true,
+          navigation: {
+            nextEl: slider.querySelector('.swiper-button-next'),
+            prevEl: slider.querySelector('.swiper-button-prev'),
+          },
+          breakpoints: {
+            320: { slidesPerView: 1, spaceBetween: 10 },
+            576: { slidesPerView: 2, spaceBetween: 15 },
+            992: { slidesPerView: 3, spaceBetween: 20 },
+            1200: { slidesPerView: 4, spaceBetween: 20 }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
